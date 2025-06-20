@@ -56,7 +56,7 @@ document.getElementById('testar').addEventListener('click', async () => {
     body: JSON.stringify({
       title: '📌 Lembrete',
       body: 'Você tem uma nova tarefa!',
-      datetime: "2025-06-19T19:40:00-03:00"
+      datetime: "{YYYY-MM-DD}T{hh:mm:ss.ms}Z" // preciso ajustar isso pra automatizar ----------
     }),
   });
 
