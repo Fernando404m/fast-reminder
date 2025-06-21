@@ -1,0 +1,113 @@
+body {
+    background-color: var(--cor-back);
+}
+
+/** header **/
+
+.header {
+    position: static;
+    top: 0;
+    display: grid;
+    grid-template-columns: 68% 20% 12%;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 46px;
+    background-color: var(--cor-pri);
+    border-radius: 0 0 5px 5px;
+}
+.main-title {
+    color: var(--cor-opos);
+}
+.time {
+    color: #1C1C1C;
+    background-color: azure;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #1C1C1C;
+}
+.config-container {
+    position: absolute;
+    right: 8px;
+    top: 11px;
+}
+#show-config-btn {
+    background-color: var(--cor-pri);
+    color: var(--cor-opos);
+    z-index: 10;
+}
+#ease-conf {
+    flex-direction: column;
+    background-color: var(--cor-pri);
+    display: none;
+    position: absolute;
+    padding: 3px;
+    left: -3px;
+    border-radius: 5px;
+    top: 0;
+    z-index: 9;
+}
+#ease-conf > * {
+    background-color: unset;
+    color: var(--cor-opos);
+}
+
+/** main section **/
+
+.title {
+    color: #1c1c1c;
+    background-color: azure;
+    width: 320px;
+    text-align: center;
+    margin: 40px auto 20px;
+    padding: 5px;
+    font: 600 24px Twinkle Star;
+    border: 1px solid #1c1c1c;
+    border-radius: 10px;
+    text-shadow: 2px 2px 2px rgba(128, 0, 128, 0.8);
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    margin: auto;
+}
+.inputs {
+    padding: 3px 5px;
+    border: 2px solid var(--cor-opos);
+    border-radius: 5px;
+}
+.date {
+    color: var(--cor-opos);
+    display: flex;
+    gap: 3px;
+    margin: 5px auto 15px;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 24px;
+}
+.date-inputs {
+    text-align: center;
+}
+.date-inputs::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.inp-len-2 {
+    width: 40px;
+}
+.inp-len-4 {
+    width: 70px;
+    margin-right: 10px;
+}
+.add-btn {
+    color: azure;
+    background-color: rgba(128, 0, 128, 0.8);
+    width: 40%;
+    margin: auto;
+    padding: 2px;
+    border-radius: 16px;
+    border: 1px solid azure;
+    font: 400 24px caveat;
+}

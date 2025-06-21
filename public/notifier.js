@@ -7,7 +7,7 @@ async function init() {
       const reg = await navigator.serviceWorker.register('/service-worker.js');
       console.log('✅ Service Worker registrado.');
 
-      document.getElementById('permitir').addEventListener('click', async () => {
+      document.getElementById('notification').addEventListener('click', async () => {
         const permission = await Notification.requestPermission();
 
         if (permission === 'granted') {

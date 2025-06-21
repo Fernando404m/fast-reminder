@@ -1,0 +1,43 @@
+.conf-anim-rot {
+  animation: config-animation-rotate .7s ease forwards;
+}
+.conf-anim-sli {
+  animation: config-animation-slide .7s ease forwards;
+}
+.conf-anim-sli-rev {
+  animation: config-animation-slide-rev .7s ease forwards;
+}
+
+@keyframes config-animation-slide {
+  0% {
+    transform: translateY(0);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 100%;
+  }
+}
+@keyframes config-animation-slide-rev {
+  0% {
+    transform: translateY(30px);
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0%;
+  }
+}
+
+@keyframes config-animation-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+  
+}
