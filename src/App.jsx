@@ -73,18 +73,18 @@ function App() {
             <input className="inputs" id="input-title" type="text" minLength={3} placeholder="titulo"/>
             <textarea className="inputs" id="input-desc" placeholder="descrição"/>
             <div className="date">
-              <input id="" className="inputs date-inputs inp-len-2" type="number" placeholder="dia" min={1} max={31}/>/
-              <input id="" className="inputs date-inputs inp-len-2" type="number" placeholder="mês" min={1} max={12}/>/
-              <input id="" className="inputs date-inputs inp-len-4" type="number" placeholder="ano" min={2025}/>
-              <input id="" className="inputs date-inputs inp-len-2" type="number" placeholder="hora" min={0} max={23}/>:
-              <input id="" className="inputs date-inputs inp-len-2" type="number" placeholder="min" min={0} max={59}/>
+              <input id="date-d" className="inputs date-inputs inp-len-2" type="number" placeholder="dia" min={1} max={31}/>/
+              <input id="date-m" className="inputs date-inputs inp-len-2" type="number" placeholder="mês" min={1} max={12}/>/
+              <input id="date-y" className="inputs date-inputs inp-len-4" type="number" placeholder="ano" min={2025}/>
+              <input id="date-h" className="inputs date-inputs inp-len-2" type="number" placeholder="hora" min={0} max={23}/>:
+              <input id="date-min" className="inputs date-inputs inp-len-2" type="number" placeholder="min" min={0} max={59}/>
             </div>
 
-            <button className="add-btn">Adicionar</button>
+            <button className="add-btn" onClick={() => sendReminder()}>Adicionar</button>
           </div>
         </section>
         <section>
-          <button id="testar">a</button>
+          <button>a</button>
           {}
         </section>
       </main>

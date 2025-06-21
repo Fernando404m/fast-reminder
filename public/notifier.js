@@ -49,19 +49,56 @@ function urlBase64ToUint8Array(base64String) {
 
 
 // enviar a notificaçao para o backend
-document.getElementById('testar').addEventListener('click', async () => {
+async function sendReminder() {
+  let title = document.getElementById("input-title").value
+  let desc = document.getElementById("input-desc").value
+  let timeIds = ["date-d", "date-m", "date-y", "date-h", "date-min"]
+  let setedTime = timeIds.map(id => {
+
+    let value = document.getElementById(id).value
+
+    if ("date-h" = undefined || "date-min" == undefined) {
+      throw console.error("insira pelo menos os valores de hora e minuto");
+    }
+
+    if (value == undefined && id != "date-h" || value == undefined && id != "date-min") {
+      switch (id) {
+        case "date-d":
+          value = String(new Date().getDate()).padStart(2, '0')
+          break;
+        case "date-m":
+          value = String(new Date().getMonth() + 1).padStart(2, '0')
+          break;
+        case "date-y":
+          value = String(new Date().getFullYear()).padStart(2, '0')
+        break;
+        default:
+          break
+      }
+    }
+
+    if (id != "date-y") {
+      if (value < 10) {
+        return `0${value}`
+      }
+    }
+    return value
+  })
+
   await fetch(`${backendURL}/lembrete`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      title: '📌 Lembrete',
-      body: 'Você tem uma nova tarefa!',
-      datetime: "{YYYY-MM-DD}T{hh:mm:ss.ms}Z" // preciso ajustar isso pra automatizar ----------
+      title: `📌 ${title}`,
+      body: `${desc}`,
+      datetime: `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
     }),
   });
 
   console.log('🚀 Notificação enviada pelo backend.');
-});
+};
 
 
-init();
+window.addEventListener("DOMContentLoaded", () => {
+  init();
+})
