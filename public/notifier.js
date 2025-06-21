@@ -50,18 +50,19 @@ function urlBase64ToUint8Array(base64String) {
 
 // enviar a notificaçao para o backend
 async function sendReminder() {
-  let title = document.getElementById("input-title").value
-  let desc = document.getElementById("input-desc").value
+  let title = document.getElementById("input-title").value.trim()
+  let desc = document.getElementById("input-desc").value.trim()
   let timeIds = ["date-d", "date-m", "date-y", "date-h", "date-min"]
+
+  if (!document.getElementById("date-h") || !document.getElementById("date-min")) {
+      throw console.error("insira pelo menos os valores de hora e minuto");
+    }
+  
   let setedTime = timeIds.map(id => {
 
     let value = document.getElementById(id).value
 
-    if ("date-h" = undefined || "date-min" == undefined) {
-      throw console.error("insira pelo menos os valores de hora e minuto");
-    }
-
-    if (value == undefined && id != "date-h" || value == undefined && id != "date-min") {
+    if (value == "" && id != "date-h" && id != "date-min") {
       switch (id) {
         case "date-d":
           value = String(new Date().getDate()).padStart(2, '0')
@@ -70,7 +71,7 @@ async function sendReminder() {
           value = String(new Date().getMonth() + 1).padStart(2, '0')
           break;
         case "date-y":
-          value = String(new Date().getFullYear()).padStart(2, '0')
+          value = String(new Date().getFullYear())
         break;
         default:
           break
@@ -78,9 +79,7 @@ async function sendReminder() {
     }
 
     if (id != "date-y") {
-      if (value < 10) {
-        return `0${value}`
-      }
+      return String(value).padStart(2, "0")
     }
     return value
   })
