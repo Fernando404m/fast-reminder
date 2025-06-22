@@ -97,6 +97,11 @@ async function sendReminder() {
   console.log('🚀 Notificação enviada pelo backend.');
 };
 
+async function refreshReminderList() {
+  const lembretes = await fetch(`${backendURL}/lembretes`)
+  .then(res => res.json());
+  return lembretes
+}
 
 window.addEventListener("DOMContentLoaded", () => {
   init();

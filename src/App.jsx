@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Remind from "./remind-iten/remind"
+import RemindContainer from "./remind-container/remind-container"
 import "./App.css"
 import "./menuAnimation.css"
 
@@ -61,13 +61,13 @@ function App() {
         <div className='config-container'>
           <button id='show-config-btn' className='nav-btn material-symbols-outlined' onClick={() => {showConfigs()}}>settings</button>
           <div id='ease-conf'>
-            <button className='config-btn nav-btn material-symbols-outlined' onClick={() => {changeTheme()}}>{theme == "dark" ? "dark_mode" : "light_mode"}</button>
             <button id="notification" className="notification-switch material-symbols-outlined ">notifications</button>
+            <button className='config-btn nav-btn material-symbols-outlined' onClick={() => {changeTheme()}}>{theme == "dark" ? "dark_mode" : "light_mode"}</button>
           </div>
         </div>
       </header>
       <main>
-        <section>
+        <section className="inserting-area section">
           <h2 className="title">Escreva um lembrete</h2>
           <div className="input-container">
             <input className="inputs" id="input-title" type="text" minLength={3} placeholder="titulo"/>
@@ -83,9 +83,8 @@ function App() {
             <button className="add-btn" onClick={() => sendReminder()}>Adicionar</button>
           </div>
         </section>
-        <section>
-          <button>a</button>
-          {}
+        <section className="reminder-list section">
+          <RemindContainer />
         </section>
       </main>
     </>
