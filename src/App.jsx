@@ -69,7 +69,7 @@ function App() {
       <main>
         <section className="inserting-area section">
           <h2 className="title">Escreva um lembrete</h2>
-          <div className="input-container">
+          <form className="input-container" onSubmit={(e) => sendReminder(e)}>
             <input className="inputs" id="input-title" required type="text" minLength={3} placeholder="titulo"/>
             <textarea className="inputs" id="input-desc" required placeholder="descrição"/>
             <div className="date">
@@ -80,8 +80,8 @@ function App() {
               <input id="date-min" className="inputs date-inputs inp-len-2" required type="number" placeholder="min" min={0} max={59}/>
             </div>
 
-            <button className="add-btn" onClick={() => sendReminder()}>Adicionar</button>
-          </div>
+            <button type="submit" className="add-btn">Adicionar</button>
+          </form>
         </section>
         <section className="reminder-list section">
           <RemindContainer />

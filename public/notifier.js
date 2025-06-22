@@ -49,62 +49,70 @@ function urlBase64ToUint8Array(base64String) {
 
 
 // enviar a notificaçao para o backend
-async function sendReminder() {
-  let title = document.getElementById("input-title").value.trim()
-  let desc = document.getElementById("input-desc").value.trim()
-  let timeIds = ["date-d", "date-m", "date-y", "date-h", "date-min"]
+async function sendReminder(e) {
+  e.preventDefault()
+  try {
+    let title = document.getElementById("input-title").value.trim()
+    let desc = document.getElementById("input-desc").value.trim()
+    let timeIds = ["date-d", "date-m", "date-y", "date-h", "date-min"]
 
-  if (!document.getElementById("date-h") || !document.getElementById("date-min")) {
-      throw console.error("insira pelo menos os valores de hora e minuto");
-    }
-  
-  let setedTime = timeIds.map(id => {
+    let currentTime = new Date()
+    let absCurrTime =  Date.now()
 
-    let value = document.getElementById(id).value
-
-    if (value == "" && id != "date-h" && id != "date-min") {
-      switch (id) {
-        case "date-d":
-          value = new Date().getDate()
-          break;
-        case "date-m":
-          value = new Date().getMonth() + 1
-          break;
-        case "date-y":
-          value = String(new Date().getFullYear())
-        break;
-        default:
-          break
+    if (!document.getElementById("date-h") || !document.getElementById("date-min")) {
+        throw new Error("insira pelo menos os valores de hora e minuto");
       }
+    
+    let setedTime = timeIds.map(id => {
+
+      let value = document.getElementById(id).value
+
+      if (value == "" && id != "date-h" && id != "date-min") {
+        switch (id) {
+          case "date-d":
+            value = currentTime.getDate()
+            break;
+          case "date-m":
+            value = currentTime.getMonth() + 1
+            break;
+          case "date-y":
+            value = String(currentTime.getFullYear())
+          break;
+          default:
+            break
+        }
+      }
+
+      if (id == "date-d" && parseInt(`${document.getElementById("date-h").value}${document.getElementById("date-min").value}`) < parseInt(`${currentTime.getHours()}${currentTime.getMinutes()}`)) {
+        value = parseInt(value) + 1
+      }
+
+      if (id != "date-y") {
+        return String(value).padStart(2, "0")
+      }
+
+      return value
+    })
+    let datetimeInIso = `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
+
+    if (new Date(datetimeInIso).getTime() < absCurrTime) {
+      throw new Error("data invalida")
     }
 
-    if (id != "date-y") {
-      return String(value).padStart(2, "0")
-    }
+    await fetch(`${backendURL}/lembrete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: `📌 ${title}`,
+        body: `${desc}`,
+        datetime: datetimeInIso
+      }),
+    });
 
-    if (id == "date-d" && `${document.getElementById("date-h").value}${document.getElementById("date-min").value}` < `${new Date().getHours()}${new Date().getMinutes()}`) {
-      value += 1
-    }
-
-    return value
-  })
-  let datetimeInIso = `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
-
-  if (new Date(datetimeInIso).getTime() < new Date.now()) {
-    throw new Error("data invalida")
+    console.log('🚀 Notificação enviada pelo backend.');
+  } catch (error) {
+    window.alert(error.message)
   }
-
-  await fetch(`${backendURL}/lembrete`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      title: `📌 ${title}`,
-      body: `${desc}`,
-      datetime: datetime
-    }),
-  });
-
-  console.log('🚀 Notificação enviada pelo backend.');
 };
 
 async function refreshReminderList() {
