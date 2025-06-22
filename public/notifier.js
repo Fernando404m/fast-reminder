@@ -65,10 +65,10 @@ async function sendReminder() {
     if (value == "" && id != "date-h" && id != "date-min") {
       switch (id) {
         case "date-d":
-          value = String(new Date().getDate()).padStart(2, '0')
+          value = new Date().getDate()
           break;
         case "date-m":
-          value = String(new Date().getMonth() + 1).padStart(2, '0')
+          value = new Date().getMonth() + 1
           break;
         case "date-y":
           value = String(new Date().getFullYear())
@@ -81,8 +81,18 @@ async function sendReminder() {
     if (id != "date-y") {
       return String(value).padStart(2, "0")
     }
+
+    if (id == "date-d" && `${document.getElementById("date-h").value}${document.getElementById("date-min").value}` < `${new Date().getHours()}${new Date().getMinutes()}`) {
+      value += 1
+    }
+
     return value
   })
+  let datetimeInIso = `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
+
+  if (new Date(datetimeInIso).getTime() < new Date.now()) {
+    throw new Error("data invalida")
+  }
 
   await fetch(`${backendURL}/lembrete`, {
     method: 'POST',
@@ -90,7 +100,7 @@ async function sendReminder() {
     body: JSON.stringify({
       title: `📌 ${title}`,
       body: `${desc}`,
-      datetime: `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
+      datetime: datetime
     }),
   });
 
