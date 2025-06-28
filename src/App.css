@@ -32,6 +32,7 @@ body {
     top: 11px;
 }
 #show-config-btn {
+    cursor: pointer;
     background-color: var(--cor-pri);
     color: var(--cor-opos);
     z-index: 10;

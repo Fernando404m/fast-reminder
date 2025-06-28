@@ -115,10 +115,15 @@ async function sendReminder(e) {
   }
 };
 
-async function refreshReminderList() {
+async function getReminderList() {
   const lembretes = await fetch(`${backendURL}/lembretes`)
   .then(res => res.json());
-  return lembretes
+  const sortedLembretes = lembretes.sort((iten, nextIten) => {
+    let itenTime = new Date(iten.datetime).getTime()
+    let nextItenTime = new Date(nextIten.datetime).getTime()
+    return itenTime - nextItenTime
+  })
+  return sortedLembretes
 }
 
 window.addEventListener("DOMContentLoaded", () => {

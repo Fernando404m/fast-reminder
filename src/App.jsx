@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import RemindContainer from "./remind-container/remind-container"
 import "./App.css"
 import "./menuAnimation.css"
+import Calendar from "./calendar/calendar"
 
 function App() {
 
@@ -85,6 +86,9 @@ function App() {
         </section>
         <section className="reminder-list section">
           <RemindContainer />
+        </section>
+        <section className="calendar section">
+          <Calendar />
         </section>
       </main>
     </>

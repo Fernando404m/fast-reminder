@@ -5,7 +5,7 @@ function RemindContainer() {
     const [remindList, setRemindList] = useState([])
     
     async function loadList() {
-        let reminders = await refreshReminderList()
+        let reminders = await getReminderList()
             setRemindList(reminders)
         }
 
