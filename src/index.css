@@ -10,46 +10,34 @@
 
 :root {
   --cor-pri: #1C1C1C;
-  --cor-back: 	#3A3A3A;
-  --cor-sec: #4D4330;
-  --cor-sec-light: #705C34;
-  --cor-sec-lighter: #9C772F;
-  --cor-ter: #C68D1A;
+  --cor-bac: #3A3A3A;
+  --cor-det: #800080cc;
   --cor-cta: #EFA000;
-  --cor-opos: azure;
+  --cor-opo: azure;
 }
 
 [data-theme="dark"] {
   --cor-pri: #1C1C1C;
-  --cor-back: 	#3A3A3A;
-  --cor-sec: #4D4330;
-  --cor-sec-light: #705C34;
-  --cor-sec-lighter: #9C772F;
-  --cor-ter: #C68D1A;
+  --cor-bac: #3A3A3A;
+  --cor-det: #800080cc;
   --cor-cta: #EFA000;
-  --cor-opos: azure;
+  --cor-opo: azure;
 }
 
 [data-theme="light"] {
   --cor-pri: #E6E1DC;
-  --cor-back: #F0ECE7;
-  --cor-sec: #B7A788;
-  --cor-sec-light: #998565;
-  --cor-sec-lighter: #7C6545;
-  --cor-ter: #5F4A2C;
+  --cor-bac: #F0ECE7;
+  --cor-det: #800080cc;
   --cor-cta: #2F2618;
-  --cor-opos: #1C1C1C;
+  --cor-opo: #1C1C1C;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     --cor-pri: #E6E1DC;
-    --cor-back: #F0ECE7;
-    --cor-sec: #B7A788;
-    --cor-sec-light: #998565;
-    --cor-sec-lighter: #7C6545;
-    --cor-ter: #5F4A2C;
+    --cor-bac: #F0ECE7;
+    --cor-det: #800080cc;
     --cor-cta: #2F2618;
-    --cor-opos: #1C1C1C;
+    --cor-opo: #1C1C1C;
   }
 }

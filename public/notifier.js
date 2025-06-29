@@ -83,7 +83,7 @@ async function sendReminder(e) {
         }
       }
 
-      if (id == "date-d" && parseInt(`${document.getElementById("date-h").value}${document.getElementById("date-min").value}`) < parseInt(`${currentTime.getHours()}${currentTime.getMinutes()}`)) {
+      if (id == "date-d" && value == currentTime.getDate() && parseInt(`${document.getElementById("date-h").value}${document.getElementById("date-min").value}`) < parseInt(`${currentTime.getHours()}${currentTime.getMinutes()}`)) {
         value = parseInt(value) + 1
       }
 

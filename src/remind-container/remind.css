@@ -9,7 +9,7 @@
 }
 .reminder-title {
     display: block;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid var(--cor-det);
     padding: 2px 5px 5px;
     border-bottom-right-radius: 12px;
 }

@@ -1,11 +1,11 @@
 body {
-    background-color: var(--cor-back);
+    background-color: var(--cor-bac);
 }
 
 /** header **/
 
 .header {
-    position: static;
+    position: sticky;
     top: 0;
     display: grid;
     grid-template-columns: 68% 20% 12%;
@@ -17,7 +17,7 @@ body {
     border-radius: 0 0 5px 5px;
 }
 .main-title {
-    color: var(--cor-opos);
+    color: var(--cor-opo);
 }
 .time {
     color: #1C1C1C;
@@ -34,7 +34,7 @@ body {
 #show-config-btn {
     cursor: pointer;
     background-color: var(--cor-pri);
-    color: var(--cor-opos);
+    color: var(--cor-opo);
     z-index: 10;
 }
 #ease-conf {
@@ -50,7 +50,7 @@ body {
 }
 #ease-conf > * {
     background-color: unset;
-    color: var(--cor-opos);
+    color: var(--cor-opo);
 }
 
 /** main section **/
@@ -72,7 +72,7 @@ body {
     font: 600 24px Twinkle Star;
     border: 1px solid #1c1c1c;
     border-radius: 10px;
-    text-shadow: 2px 2px 2px rgba(128, 0, 128, 0.8);
+    text-shadow: 2px 2px 2px var(--cor-det);
     box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 .input-container {
@@ -84,11 +84,11 @@ body {
 }
 .inputs {
     padding: 3px 5px;
-    border: 2px solid var(--cor-opos);
+    border: 2px solid var(--cor-opo);
     border-radius: 5px;
 }
 .date {
-    color: var(--cor-opos);
+    color: var(--cor-opo);
     display: flex;
     gap: 3px;
     margin: 5px auto 15px;
@@ -112,7 +112,7 @@ body {
 .add-btn {
     cursor: pointer;
     color: azure;
-    background-color: rgba(128, 0, 128, 0.8);
+    background-color: var(--cor-det);
     height: 38px;
     width: 40%;
     margin: auto;
@@ -134,6 +134,8 @@ body {
 .list-container {
     width: 85%;
     margin: auto;
+    max-height: 400px;
+    overflow-y: scroll;
 }
 .refresh-btn {
     cursor: pointer;
@@ -143,7 +145,7 @@ body {
     width: 90px;
     margin-bottom: 20px;
     color: azure;
-    background-color: rgba(128, 0, 128, 0.8);
+    background-color: var(--cor-det);
     padding: 2px 8px;
     border: 1px solid azure;
     border-radius: 12px;
@@ -152,4 +154,59 @@ body {
 }
 .refresh-btn:hover {
     border: 2px solid azure;
+}
+
+/* calendar */
+
+.calendar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 3px;
+    padding: 10px;
+}
+.month {
+    background-color: azure;
+    grid-column: 1 / 8;
+    grid-row: 1 / 2;
+    text-align: center;
+    align-content: center;
+    border: 2px solid var(--cor-det);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font: 900 24px caveat;
+}
+.weekday {
+    background-color: rgb(200, 245, 225);
+    height: 44px;
+    width: 44px;
+    text-align: center;
+    align-content: center;
+    font: 900 22px caveat;
+    border: 1px solid var(--cor-det);
+    border-radius: 6px;
+}
+#corrective {
+    display: none;
+}
+.calendar-day {
+    background-color: azure;
+    height: 44px;
+    width: 44px;
+    border: 1px solid var(--cor-det);
+    border-radius: 6px;
+}
+.day {
+    display: block;
+    width: 55%;
+    margin: 1px;
+    background-color: rgb(200, 245, 225);
+    border-radius: 8px;
+    text-align: center;
+}
+.calendar-remind {
+    display: block;
+    text-align: end;
+    margin: 0 3px;
+    transform: translateY(-5px);
 }
