@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 function Calendar() {
-    const [month, setMonth] = useState(new Date().toLocaleString('pt-BR', { month: 'long' }))
+    const [month, setMonth] = useState(new Date().getMonth())
     const [day, setDay] = useState([[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]])
 
     async function loadCalendar() {
@@ -21,7 +21,7 @@ function Calendar() {
             }
         })
 
-        const weekday = new Date(`${new Date().getFullYear()}-${new Date().getMonth()}-01T01:01:01.000-03:00`).getDay()
+        const weekday = new Date(`${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}-01T01:01:01.000-03:00`).getDay()
         const corrective = document.getElementById("corrective")
         
         if (weekday > 0) {
@@ -29,6 +29,23 @@ function Calendar() {
             corrective.style.gridColumn = `1 / ${weekday + 1}`
         } else {
             corrective.style.display = "none"
+        }
+
+        const daysAmount = new Date(2025, month + 1 , 0).getDate()
+        const [day29, day30, day31] = [document.getElementById("day-29"), document.getElementById("day-30"), document.getElementById("day-31")]
+
+        switch (daysAmount) {
+            case 28:
+                day29.style.display = day30.style.display = day31.style.display = "none"
+                break;
+            case 29:
+                day30.style.display = day31.style.display = "none"
+                break;
+            case 30:
+                day31.style.display = "none"
+                break;
+            default:
+                break;
         }
     }
 
@@ -40,7 +57,7 @@ function Calendar() {
         <>
             <button className="refresh-btn" onClick={() => {loadCalendar()}}>Recarregar</button>
             <div className="calendar-container">
-                <div className="month">{month}</div>
+                <div className="month">{new Date(2025, month).toLocaleString('pt-BR', { month: 'long' })}</div>
 
                 <div className="weekday">Dom</div>
                 <div className="weekday">Seg</div>
@@ -164,15 +181,15 @@ function Calendar() {
                     <span className="day">28</span>
                     <span className="calendar-remind">{day[27][0] ? "📌" : ""}</span>
                 </div>
-                <div className="calendar-day">
+                <div id="day-29" className="calendar-day">
                     <span className="day">29</span>
                     <span className="calendar-remind">{day[28][0]  ? "📌" : ""}</span>
                 </div>
-                <div className="calendar-day">
+                <div id="day-30" className="calendar-day">
                     <span className="day">30</span>
                     <span className="calendar-remind">{day[29][0]  ? "📌" : ""}</span>
                 </div>
-                <div className="calendar-day">
+                <div id="day-31" className="calendar-day">
                     <span className="day">31</span>
                     <span className="calendar-remind">{day[30][0]  ? "📌" : ""}</span>
                 </div>
