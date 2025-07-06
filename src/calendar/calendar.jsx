@@ -5,6 +5,8 @@ function Calendar() {
     const [day, setDay] = useState([[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]])
 
     async function loadCalendar() {
+        setDay([[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]])
+
         let reminders = await getReminderList()
 
         reminders.forEach(rem => {

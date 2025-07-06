@@ -5,6 +5,7 @@ function RemindContainer() {
     const [remindList, setRemindList] = useState([])
     
     async function loadList() {
+        setRemindList([])
         let reminders = await getReminderList()
             setRemindList(reminders)
         }
@@ -19,11 +20,11 @@ function RemindContainer() {
             <button className="refresh-btn" onClick={() => loadList()}>Recarregar</button>
             <div className="list-container">
                 {remindList.length == 0 ? (
-                    <div>nada encontrado</div>
+                    <div></div>
                 ) : (
                     <div>
                         {remindList.map((iten, i) => (
-                            <Remind itenId={iten.id} key={i} title={iten.title} desc={iten.body} datetime={iten.datetime}/>
+                            <Remind itenId={iten.id} fn={loadList} key={i} title={iten.title} desc={iten.body} datetime={iten.datetime}/>
                         ))}
                     </div>
                 )}

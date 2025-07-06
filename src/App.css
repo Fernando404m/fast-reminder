@@ -134,8 +134,9 @@ body {
 .list-container {
     width: 85%;
     margin: auto;
+    min-height: 100px;
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .refresh-btn {
     cursor: pointer;

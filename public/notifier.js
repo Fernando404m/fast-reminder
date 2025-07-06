@@ -126,6 +126,10 @@ async function getReminderList() {
   return sortedLembretes
 }
 
+async function rmvReminder(id) {
+  await fetch(`${backendURL}/lembrete/${id}`, { method: 'DELETE' });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 })
