@@ -105,7 +105,7 @@ async function sendReminder(e) {
       body: JSON.stringify({
         title: `📌 ${title}`,
         body: `${desc}`,
-        datetime: datetimeInIso
+        datetime: datetimeInIso,
       }),
     });
 

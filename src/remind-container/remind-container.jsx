@@ -23,7 +23,7 @@ function RemindContainer() {
                 ) : (
                     <div>
                         {remindList.map((iten, i) => (
-                            <Remind itenId={`remind-iten-${i}`} key={i} title={iten.title} desc={iten.body} datetime={iten.datetime}/>
+                            <Remind itenId={iten.id} key={i} title={iten.title} desc={iten.body} datetime={iten.datetime}/>
                         ))}
                     </div>
                 )}
