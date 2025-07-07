@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import RemindContainer from "./remind-container/remind-container"
+import Calendar from "./calendar/calendar"
+import Daily from "./remind-container/daily"
 import "./App.css"
 import "./menuAnimation.css"
-import Calendar from "./calendar/calendar"
+
 
 function App() {
 
@@ -84,11 +86,14 @@ function App() {
             <button type="submit" className="add-btn">Adicionar</button>
           </form>
         </section>
-        <section className="reminder-list section">
-          <RemindContainer />
+        <section className="daily-reminder section">
+          <Daily />
         </section>
         <section className="calendar section">
           <Calendar />
+        </section>
+        <section className="reminder-list section">
+          <RemindContainer />
         </section>
       </main>
     </>

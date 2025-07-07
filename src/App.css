@@ -15,6 +15,7 @@ body {
     height: 46px;
     background-color: var(--cor-pri);
     border-radius: 0 0 5px 5px;
+    z-index: 10;
 }
 .main-title {
     color: var(--cor-opo);
@@ -126,18 +127,12 @@ body {
     border: 2px solid azure;
 }
 
-/* reminder list section */
+/* daily reminder section */
 
-.reminder-list {
-    margin-top: 20px;
-}
-.list-container {
-    width: 85%;
-    margin: auto;
-    min-height: 100px;
-    max-height: 400px;
-    overflow-y: auto;
-}
+
+
+/* calendar */
+
 .refresh-btn {
     cursor: pointer;
     display: block;
@@ -153,12 +148,6 @@ body {
     font: 900 18px caveat;
     box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3);
 }
-.refresh-btn:hover {
-    border: 2px solid azure;
-}
-
-/* calendar */
-
 .calendar-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -210,4 +199,17 @@ body {
     text-align: end;
     margin: 0 3px;
     transform: translateY(-5px);
+}
+
+/* reminder list section */
+
+.list-container {
+    width: 85%;
+    margin: auto;
+    min-height: 100px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.refresh-btn:hover {
+    border: 2px solid azure;
 }
