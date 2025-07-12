@@ -13,6 +13,10 @@ function Login() {
     await login(userName, userPassword)
     navigate('/');
   };
+  async function guestLogin () {
+    await login("guest", "guest")
+    navigate('/');
+  }
 
   return (
     <div className='login'>
@@ -22,6 +26,7 @@ function Login() {
         <input id='user-password' className='inputs' type="password" placeholder='Senha'/>
         <button className='login-btn' type='submit'>Entrar</button>
       </form>
+      <button className='guest-btn' onClick={() => guestLogin()}>Entrar como guest</button>
     </div>
   );
 }

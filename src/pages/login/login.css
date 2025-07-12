@@ -18,7 +18,7 @@
     text-decoration: underline;
 }
 .login-form {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     padding: 30px;
@@ -39,5 +39,22 @@
     box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.5 );
 }
 .login-btn:hover {
+    border: 2px solid azure;
+}
+.guest-btn {
+    display: block;
+    cursor: pointer;
+    color: azure;
+    height: 24px;
+    background-color: transparent;
+    margin: auto;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid azure;
+    font-size: 12PX;
+    font-weight: 600;
+    box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.5 );
+}
+.guest-btn:hover {
     border: 2px solid azure;
 }
