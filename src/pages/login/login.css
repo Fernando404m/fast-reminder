@@ -1,0 +1,43 @@
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--cor-pri);
+    width: 320px;
+    height: 320px;
+    border: 2px solid var(--cor-cta);
+    border-radius: 10px;
+}
+.login h2 {
+    font-size: 32px;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: var(--cor-opo);
+    text-decoration: underline;
+}
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 25px;
+}
+.login-btn {
+    cursor: pointer;
+    color: azure;
+    background-color: #e8491d;
+    height: 38px;
+    width: 40%;
+    margin: auto;
+    padding: 2px;
+    border-radius: 16px;
+    border: 1px solid azure;
+    font-size: 16PX;
+    font-weight: 600;
+    box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.5 );
+}
+.login-btn:hover {
+    border: 2px solid azure;
+}

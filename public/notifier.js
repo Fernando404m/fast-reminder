@@ -99,9 +99,14 @@ async function sendReminder(e) {
       throw new Error("data invalida")
     }
 
+    const token = localStorage.getItem("token")
+
     await fetch(`${backendURL}/lembrete`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+       },
       body: JSON.stringify({
         title: `📌 ${title}`,
         body: `${desc}`,
@@ -116,7 +121,13 @@ async function sendReminder(e) {
 };
 
 async function getReminderList() {
-  const lembretes = await fetch(`${backendURL}/lembretes`)
+  const token = localStorage.getItem("token")
+
+  const lembretes = await fetch(`${backendURL}/lembretes`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  })
   .then(res => res.json());
   const sortedLembretes = lembretes.sort((iten, nextIten) => {
     let itenTime = new Date(iten.datetime).getTime()
@@ -127,9 +138,24 @@ async function getReminderList() {
 }
 
 async function rmvReminder(id) {
-  await fetch(`${backendURL}/lembrete/${id}`, { method: 'DELETE' });
+  const token = localStorage.getItem("token")
+  
+  await fetch(`${backendURL}/lembrete/${id}`, { 
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  init();
+  const observer = new MutationObserver(() => {
+    const btn = document.getElementById('notification');
+    if (btn) {
+      init();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 })
