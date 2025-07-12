@@ -18,11 +18,14 @@ async function init() {
 
           console.log('✅ Inscrição criada:', subscription);
 
-          
+          const token = localStorage.getItem("token")
           // Envia a inscrição para o backend
           await fetch(`${backendURL}/subscribe`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify(subscription),
           });
 
