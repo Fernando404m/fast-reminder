@@ -88,12 +88,15 @@ async function sendReminder(e) {
         }
       }
 
-      if (id == "date-d" && value == currentTime.getDate() && parseInt(`${document.getElementById("date-h").value}${document.getElementById("date-min").value}`) < parseInt(`${currentTime.getHours()}${currentTime.getMinutes()}`)) {
-        value = parseInt(value) + 1
+      if (id != "date-y") {
+        value = String(value).padStart(2, "0")
       }
 
-      if (id != "date-y") {
-        return String(value).padStart(2, "0")
+      const dateHorPad = String(document.getElementById("date-h").value).padStart(2, "0")
+      const dateMinPad = String(document.getElementById("date-min").value).padStart(2, "0")
+
+      if (id == "date-d" && value == currentTime.getDate() && parseInt(`${dateHorPad}${dateMinPad}`) < parseInt(`${currentTime.getHours()}${currentTime.getMinutes()}`)) {
+        value = String(parseInt(value) + 1).padStart(2, "0")
       }
 
       return value
