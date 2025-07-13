@@ -64,6 +64,7 @@ function Home() {
         <div className='config-container'>
           <button id='show-config-btn' className='material-symbols-outlined' onClick={() => {showConfigs()}}>settings</button>
           <div id='ease-conf'>
+            <button id="logout" onClick={() => logout()} className="logout material-symbols-outlined ">logout</button>
             <button id="notification" className="notification-switch material-symbols-outlined ">notifications</button>
             <button className='config-btn material-symbols-outlined' onClick={() => {changeTheme()}}>{theme == "dark" ? "dark_mode" : "light_mode"}</button>
           </div>
@@ -75,13 +76,24 @@ function Home() {
           <form className="input-container" onSubmit={(e) => sendReminder(e)}>
             <input className="inputs" id="input-title" required type="text" minLength={3} placeholder="titulo"/>
             <textarea className="inputs" id="input-desc" required placeholder="descrição"/>
-            <div className="date">
+
+            <fieldset className="date">
               <input id="date-d" className="inputs date-inputs inp-len-2" type="number" placeholder="dia" min={1} max={31}/>/
               <input id="date-m" className="inputs date-inputs inp-len-2" type="number" placeholder="mês" min={1} max={12}/>/
               <input id="date-y" className="inputs date-inputs inp-len-4" type="number" placeholder="ano" min={2025}/>
               <input id="date-h" className="inputs date-inputs inp-len-2" required type="number" placeholder="hora" min={0} max={23}/>:
               <input id="date-min" className="inputs date-inputs inp-len-2" required type="number" placeholder="min" min={0} max={59}/>
-            </div>
+            </fieldset>
+
+            <fieldset className="week">
+              <label className="week-lab">Dom<input className="week-check" type="checkbox" name="week-check" value={0} /></label>
+              <label className="week-lab">Seg<input className="week-check" type="checkbox" name="week-check" value={1} /></label>
+              <label className="week-lab">Ter<input className="week-check" type="checkbox" name="week-check" value={2} /></label>
+              <label className="week-lab">Qua<input className="week-check" type="checkbox" name="week-check" value={3} /></label>
+              <label className="week-lab">Qui<input className="week-check" type="checkbox" name="week-check" value={4} /></label>
+              <label className="week-lab">Sex<input className="week-check" type="checkbox" name="week-check" value={5} /></label>
+              <label className="week-lab">Sab<input className="week-check" type="checkbox" name="week-check" value={6} /></label>
+            </fieldset>
 
             <button type="submit" className="add-btn">Adicionar</button>
           </form>

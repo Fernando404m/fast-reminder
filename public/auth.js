@@ -13,6 +13,10 @@ async function login(username, password) {
     localStorage.removeItem("token")
   }
 }
+async function logout() {
+  localStorage.removeItem("token")
+  location.reload()
+}
 
 async function verificarToken() {
   const token = localStorage.getItem('token');

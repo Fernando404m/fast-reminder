@@ -58,6 +58,8 @@ async function sendReminder(e) {
     let title = document.getElementById("input-title").value.trim()
     let desc = document.getElementById("input-desc").value.trim()
     let timeIds = ["date-d", "date-m", "date-y", "date-h", "date-min"]
+    let weekCheked = Array.from(document.querySelectorAll(".week-check:checked")).map(iten => parseInt(iten.value))
+    if (weekCheked.length < 1) weekCheked = undefined
 
     let currentTime = new Date()
     let absCurrTime =  Date.now()
@@ -96,6 +98,7 @@ async function sendReminder(e) {
 
       return value
     })
+
     let datetimeInIso = `${setedTime[2]}-${setedTime[1]}-${setedTime[0]}T${setedTime[3]}:${setedTime[4]}:00-03:00`
 
     if (new Date(datetimeInIso).getTime() < absCurrTime) {
@@ -114,6 +117,8 @@ async function sendReminder(e) {
         title: `📌 ${title}`,
         body: `${desc}`,
         datetime: datetimeInIso,
+        hours: `${setedTime[3]}:${setedTime[4]}`,
+        week: weekCheked
       }),
     });
 
