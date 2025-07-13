@@ -62,10 +62,10 @@ function Home() {
         <span className="time">{dateTimeNow.toLocaleTimeString()}</span>
 
         <div className='config-container'>
-          <button id='show-config-btn' className='nav-btn material-symbols-outlined' onClick={() => {showConfigs()}}>settings</button>
+          <button id='show-config-btn' className='material-symbols-outlined' onClick={() => {showConfigs()}}>settings</button>
           <div id='ease-conf'>
             <button id="notification" className="notification-switch material-symbols-outlined ">notifications</button>
-            <button className='config-btn nav-btn material-symbols-outlined' onClick={() => {changeTheme()}}>{theme == "dark" ? "dark_mode" : "light_mode"}</button>
+            <button className='config-btn material-symbols-outlined' onClick={() => {changeTheme()}}>{theme == "dark" ? "dark_mode" : "light_mode"}</button>
           </div>
         </div>
       </header>

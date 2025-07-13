@@ -50,8 +50,13 @@ body {
     z-index: 9;
 }
 #ease-conf > * {
+    cursor: pointer;
     background-color: unset;
     color: var(--cor-opo);
+    border-radius: 6px;
+}
+#ease-conf > *:hover {
+    background-color: var(--cor-bac);
 }
 
 /** main section **/
